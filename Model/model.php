@@ -54,6 +54,37 @@ function authenticateUser($mail, $mdp_co, PDO $bdd = null)
     return null;
 }
 
+function return_id_user($mail, $mdp_co, PDO $bdd = null)
+{
+
+    $user = null;
+
+    if ($bdd == null) {
+        $bdd = getDataBase();
+    }
+
+    $connect = false;
+    if ($bdd) {
+        try {
+            $stmt = $bdd->prepare("SELECT * FROM compte WHERE mail=:pMail AND mdp_co=:pMdp_co");
+            $stmt->bindParam(':pMail', $mail);
+            $stmt->bindParam(':pMdp_co', $mdp_co);
+            if ($stmt->execute()) {
+                $user = $stmt->fetch(PDO::FETCH_OBJ);
+                var_dump($user);
+                return $user->id_co;
+            }
+        } catch (Exception $e) {
+            $connect = false;
+        }
+    }
+    if ($connect) {
+
+        return $user;
+    }
+    return null;
+}
+
 function ajUtilisateur($user_co, $mdp_co, $mail, $promo_co, $ecole)
 {
     $newId = null;
@@ -350,27 +381,64 @@ function SupprParticipe($id_e)
     return $result;
 }
 
-function verifParticipe ($id_co){
+function VerifEvent()
+{
     $newId = null;
     $bdd = getDataBase();
     if ($bdd == null) {
         $bdd = getDataBase();
     }
-    // La bd est-elle valide ?
-    if (isset($bdd)) {
-        try {
-            // Insertion dans la bd
-            $stmt = $bdd->prepare("SELECT id_co FROM participe WHERE id_co = :pId_co");
-            $stmt->bindParam(':pId_co', $id_co);
-            if ($id_co) {
-                return true;
-            }else{
-                return false;
-            }
-        } catch (Exception $e) {
-            //die('Erreur : ' . $e->getMessage());
-            $result = 0;
+    try {
+        $req = $bdd->query('SELECT titre, DATE_FORMAT(date_debut, \'%d/%m/%Y\') AS date_debut FROM event e, participe p, compte c WHERE e.id_e = p.id_e and p.id_co = c.id_co');
+        $donnees = $req->fetchAll();
+        foreach ($donnees as $event) {
+            //commande
+            echo $event['date_debut'];
         }
+    }catch (Exception $e) {
+        //die('Erreur : ' . $e->getMessage());
+        $result = 0;
+    }
+    return $result;
+}
+
+function verifTendence ()
+{
+    $newId = null;
+    $bdd = getDataBase();
+    if ($bdd == null) {
+        $bdd = getDataBase();
+    }
+    try {
+        $req = $bdd->query('SELECT e.titre,  DATE_FORMAT(e.date_debut, \'%d/%m/%Y\') as date_debut, (SELECT COUNT(p.id_co) FROM participe AS p WHERE p.id_e = e.id_e) AS participants FROM event e order by participants DESC LIMIT 5');
+        $donnees = $req->fetchAll();
+        foreach ($donnees as $event) {
+            echo $event['date_debut'];
+        }
+    }catch (Exception $e) {
+        //die('Erreur : ' . $e->getMessage());
+        $result = 0;
+    }
+    return $result;
+}
+
+function verifDate()
+{
+    $newId = null;
+    $bdd = getDataBase();
+    if ($bdd == null) {
+        $bdd = getDataBase();
+    }
+    try {
+        $req = $bdd->query('SELECT * FROM event where date_debut = \'2018-09-14\'');
+        $donnees = $req->fetchAll();
+        foreach ($donnees as $event) {
+            //commande
+
+        }
+    }catch (Exception $e) {
+        //die('Erreur : ' . $e->getMessage());
+        $result = 0;
     }
     return $result;
 }

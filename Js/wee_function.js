@@ -35,6 +35,13 @@ function gent_info_event() {
     //console.log('test1234');
 }
 
+function actualiser_timeline() {
+    $("#timeline").empty();
+    recupEvents();
+    //console.log("marche ou pas ?");
+    //$('#EVENT_Modal').modal('hide');
+}
+
 function draw_event_modal(_id, _categorie, _heure, _jour, _mois, _annee, _titre, _content) {
     comment_section = '<span class="divider"></span><br>\
                        <input type="text" class="form-control" placeholder="Recipient\'s username" aria-label="Recipient\'s username" aria-describedby="basic-addon2">\
@@ -70,6 +77,16 @@ function comment_ModalLabel_SET_info(_id_event) {
                 data[index].description);
         });
     });*/
+}
+
+function showdatepicker(_id) {
+    $("#"+_id).datepicker($.datepicker.regional[ "fr" ] );
+}
+
+function convertdateformat(_date_euro) {
+    _date_euro = _date_euro.split('-');
+    var _date_us = _date_euro.reverse().join('-');
+    return _date_us;
 }
 
 

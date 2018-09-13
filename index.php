@@ -1,7 +1,8 @@
 <?php
-include 'view\header.php';
+include 'view/header.php';
+include_once ("Model/model.php");
 
-if (!isset($_SESSION['mail'])) {
+if (!isset($_SESSION['mail']) && empty($_SESSION['mail'])) {
     header('Location: view/login.php');
 }
 ?>
@@ -64,14 +65,14 @@ if (!isset($_SESSION['mail'])) {
                         <div class="input-group-prepend">
                             <span class="input-group-text">Date du début de l'évenement</span>
                         </div>
-                        <input id="NE_input_date_deb" type="text" class="form-control">
+                        <input id="NE_input_date_deb" type="text" class="form-control datepicker" onfocus="showdatepicker('NE_input_date_deb')">
                     </div>
                     <br>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Date de fin de l'évenement</span>
                         </div>
-                        <input id="NE_input_date_fin" type="text" class="form-control">
+                        <input id="NE_input_date_fin" type="text" class="form-control datepicker" onclick="showdatepicker('NE_input_date_fin')">
                     </div>
                     <br>
                     <div class="input-group">
@@ -90,12 +91,22 @@ if (!isset($_SESSION['mail'])) {
                     <br>
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span id="NE_input_categorie" class="input-group-text">Catégorie de l'évenement</span>
+                            <span class="input-group-text">Catégorie de l'évenement</span>
                         </div>
-                        <select class="form-control">
-                            <?php ?>
+                        <select id="NE_input_categorie" class="form-control">
+                            <?php
+                                $req = $bdd->query('SELECT id_cat,libeller FROM categorie');
+                                $donnees = $req->fetchAll();
+
+                                foreach ($donnees as $event) {
+                                    echo "<option value=".$event['id_cat'].">". $event['libeller']."</option>";
+                                }
+
+                                $req->closeCursor();
+                            ?>
                         </select>
-                        <input type="submit" value="Submit" class="btn">
+                        <br>
+                        <input type="submit" value="Submit" class="btn" onclick="actualiser_timeline()">
                     </div>
                 </form>
             </div>

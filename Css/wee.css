@@ -204,3 +204,5 @@ h1 {
     margin-left: auto;
     margin-right: auto;
 }
+
+.datepicker{z-index:1151 !important;}

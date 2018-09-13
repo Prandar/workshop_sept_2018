@@ -4,6 +4,7 @@ include_once ("../Model/model.php");
 $mail=$_POST["mail"];
 $mdp_co=$_POST["mdp_co"];
 $userObject=authenticateUser($mail,$mdp_co);
+$id_co=return_id_user($mail,$mdp_co);
 //Si il existe on lui met le statut connecté par le booléen $connected
 if($userObject){
     $connected = true;
@@ -17,6 +18,7 @@ if ($connected){
     session_start ();
     $_SESSION['mail']=$mail;
     $_SESSION['mdp_co']=$mdp_co;
+    $_SESSION['id_co']=$id_co;
     // On stocke le fait qu'il soit connecté dans la variable "usertype" de sa session
     $_SESSION['usertype'] = $connected;
     // On le renvoie vers sa page d'accueil utilisateur
