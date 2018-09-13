@@ -118,7 +118,7 @@ function convertion_categorie(_id_cat) {
 }
 
 function filtre_act(_filtre_click) {
-    liste_filtre_act.push(_filtre_click);
+/*    liste_filtre_act.push(_filtre_click);
     if (liste_filtre_act.length >= 7) {
         liste_filtre_act=[];
     } else {
@@ -133,7 +133,7 @@ function filtre_act(_filtre_click) {
         $.each(liste_filtre_act,function (key,value) {
             $("."+value);
         });
-    }
+    }*/
 }
 
 
