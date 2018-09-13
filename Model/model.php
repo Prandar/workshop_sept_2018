@@ -185,7 +185,7 @@ function returnEvent($id_e)
 
     // La bd est-elle valide ?
     if ($bdd) {
-        $resultat = $bdd->query("SELECT * FROM event WHERE id_e=$id_e");
+        $resultat = $bdd->query("SELECT titre, date_debut FROM event, participe, compte WHERE id_e=.$id_e. = ");
         if ($resultat) {
             $event = $resultat->fetchAll(PDO::FETCH_OBJ);
             // Fermeture de la ressource
@@ -293,4 +293,84 @@ function Comment_to_JSON($id_event)
             echo (json_encode($events));
         }
     }
+}
+
+function ajParticipe($id_co, $id_e)
+{
+    $newId = null;
+    $bdd = getDataBase();
+    if ($bdd == null) {
+        $bdd = getDataBase();
+    }
+    // La bd est-elle valide ?
+    if (isset($bdd)) {
+        try {
+            // Insertion dans la bd
+            $stmt = $bdd->prepare("INSERT INTO participe (id_co, id_e) VALUE (:pId_co, :pId_e)");
+            $stmt->bindParam(':pId_co', $id_co);
+            $stmt->bindParam(':pId_e', $id_e);
+            var_dump($stmt);
+            if ($stmt->execute()) {
+                // On récupère l'ID de la commande
+                $result = 1;
+            }
+
+        } catch (Exception $e) {
+            //die('Erreur : ' . $e->getMessage());
+            $result = 0;
+        }
+    }
+    return $result;
+}
+
+function SupprParticipe($id_e)
+{
+    $newId = null;
+    $bdd = getDataBase();
+    if ($bdd == null) {
+        $bdd = getDataBase();
+    }
+    // La bd est-elle valide ?
+    if (isset($bdd)) {
+
+            // Insertion dans la bd
+            $stmt = $bdd->prepare("DELETE FROM participe WHERE id_e = :pId_e");
+            $stmt->bindParam(':pId_e', $id_e);
+            var_dump($stmt);
+            if ($stmt->execute()) {
+                // On récupère l'ID de la commande
+                $result = 1;
+            }
+            try {
+        } catch (Exception $e) {
+            //die('Erreur : ' . $e->getMessage());
+            $result = 0;
+        }
+    }
+    return $result;
+}
+
+function verifParticipe ($id_co){
+    $newId = null;
+    $bdd = getDataBase();
+    if ($bdd == null) {
+        $bdd = getDataBase();
+    }
+    // La bd est-elle valide ?
+    if (isset($bdd)) {
+        try {
+            // Insertion dans la bd
+            $stmt = $bdd->prepare("SELECT id_co FROM participe WHERE id_co = :pId_co");
+            $stmt->bindParam(':pId_co', $id_co);
+            if ($id_co) {
+                return true;
+            }else{
+                return false;
+            }
+        } catch (Exception $e) {
+            //die('Erreur : ' . $e->getMessage());
+            $result = 0;
+        }
+    }
+    return $result;
 }
