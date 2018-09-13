@@ -1,19 +1,20 @@
 /*      https://codepen.io/rossmcneil/pen/rcxGb     */
     section#timeline {
-        width: 80%;
+        width: 97%;
         margin: 20px auto;
+        padding: 10px 20px;
         position: relative;
     }
     section#timeline:before {
         content: '';
         display: block;
         position: absolute;
-        left: 50%;
+        left: 49.7%;
         top: 0;
         margin: 0 0 0 -1px;
         width: 2px;
         height: 100%;
-        background: rgba(255,255,255,0.2);
+        background: rgb(255,255,255);
     }
     section#timeline article {
         width: 100%;
@@ -38,14 +39,14 @@
     padding: 10px 0;
     position: absolute;
     top: 0;
-    left: 48.2%;
+    left: 49%;
     margin: 0 0 0 -32px;
     border-radius: 100%;
     font-size: 12px;
     font-weight: 900;
     text-transform: uppercase;
     background: #25303B;
-    color: rgba(255,255,255,0.5);
+    color: rgb(255,255,255);
     /*border: 2px solid rgba(255,255,255,0.2);*/
     /*box-shadow: 0 0 0 7px #25303B;*/
     }
@@ -97,59 +98,155 @@
         left: -5px;
     }
 
+
+
+    span.cinema {
+        background-color: #479A83!important;
+    }
+    span.cinema:after {
+        background-color: #479A83!important;
+    }
+
+
+    span.sport {
+        background-color: #64C271 !important;
+    }
+    span.sport:after {
+        background-color: #64C271 !important;
+    }
+
+
+    span.culture {
+        background-color: #3B82B6!important;
+    }
+    span.culture:after {
+        background-color: #3B82B6!important;
+    }
+
+
+    span.loisir {
+        background-color: #8357AC!important;
+    }
+    span.loisir:after {
+        background-color: #8357AC!important;
+    }
+
+
+    span.musique {
+        background-color: #EDC233!important;
+    }
+    span.musique:after {
+        background-color: #EDC233!important;
+    }
+
+    span.soiree {
+        background-color: #DB8438!important;
+    }
+    span.soiree:after {
+        background-color: #DB8438!important;
+    }
+
+    span.autre {
+        background-color: #D95F49!important;
+    }
+    span.autre:after {
+        background-color: #D95F49!important;
+    }
+
+    /* ******************************** */
+
     section#timeline div.inner h2.cinema {
-        background: red;
+        background: #479A83;
     }
     section#timeline div.inner h2.cinema:after {
-        background: red;
+        background: #479A83;
     }
 
 
     section#timeline div.inner h2.sport {
-        background: orange;
+        background: #64C271 ;
     }
     section#timeline div.inner h2.sport:after {
-        background: orange;
+        background: #64C271 ;
     }
 
 
     section#timeline div.inner h2.culture {
-        background: yellow;
+        background: #3B82B6;
     }
     section#timeline div.inner h2.culture:after {
-        background: yellow;
+        background: #3B82B6;
     }
 
 
     section#timeline div.inner h2.loisir {
-        background: green;
+        background: #8357AC;
     }
     section#timeline div.inner h2.loisir:after {
-        background: green;
+        background: #8357AC;
     }
 
 
     section#timeline div.inner h2.musique {
-        background: blue;
+        background: #EDC233;
     }
     section#timeline div.inner h2.musique:after {
-        background: blue;
+        background: #EDC233;
     }
 
     section#timeline div.inner h2.soiree {
-        background: purple;
+        background: #DB8438;
     }
     section#timeline div.inner h2.soiree:after {
-        background: purple;
+        background: #DB8438;
     }
 
     section#timeline div.inner h2.autre {
-        background: pink;
+        background: #D95F49;
     }
     section#timeline div.inner h2.autre:after {
-        background: pink;
+        background: #D95F49;
+    }
+
+    /* ******************************** */
+
+    .cinema {
+        background-color: #479A83;
+        border-radius: 40px;
+    }
+
+    .sport {
+        background-color: #64C271 ;
+        border-radius: 40px;
+    }
+
+    .culture {
+        background-color: #3B82B6;
+        border-radius: 40px;
+    }
+
+    .loisir {
+        background-color: #8357AC;
+        border-radius: 40px;
+    }
+
+    .musique {
+        background-color: #EDC233;
+        border-radius: 40px;
+    }
+
+    .soiree {
+        background-color: #DB8438;
+        border-radius: 40px;
+    }
+
+    .autre {
+        background-color: #D95F49;
+        border-radius: 40px;
     }
 /*      FIN     */
+
+
 
 html, body {
     margin: 0;
@@ -158,7 +255,7 @@ html, body {
 }
 
 #timeline {
-    background-color: lightgray;
+    background-color: rgba(0,0,0,0.25);
     min-height: 90%;
 }
 
@@ -206,3 +303,23 @@ h1 {
 }
 
 .datepicker{z-index:1151 !important;}
+
+#sub_bar{
+    margin: 0 auto;
+}
+
+.container-fluid{
+
+    background-image: url(../Img/party2.jpg)!important;
+
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.letter{
+    color: white;
+}

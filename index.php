@@ -3,17 +3,36 @@ include 'view/header.php';
 include_once ("Model/model.php");
 
 if (!isset($_SESSION['mail']) && empty($_SESSION['mail'])) {
-    header('Location: view/login.php');
+    header('Location: login.php');
 }
 ?>
 <div id="sub_bar" class="row">
-    <button type="button" class="btn filtre" onclick="test('cinema')">Cinéma</button>
-    <button type="button" class="btn filtre" onclick="test('sport')">Sport</button>
-    <button type="button" class="btn filtre" onclick="test('culture')">Culture</button>
-    <button type="button" class="btn filtre" onclick="test('loisir')">Loisir</button>
-    <button type="button" class="btn filtre" onclick="test('musique')">Musique</button>
-    <button type="button" class="btn filtre" onclick="test('soiree')">Soirée</button>
-    <button type="button" class="btn filtre" onclick="test('autre')">Autre</button>
+    <div class="col-2"></div>
+    <div class="col-1">
+        <button type="button" id="filtre_cinema" class="btn filtre cinema" onclick="filtre_act('filtre_cinema')">Cinéma</button>
+    </div>
+    <div class="col-1">
+        <button type="button" id="filtre_sport" class="btn filtre sport" onclick="filtre_act('filtre_sport')">Sport</button>
+    </div>
+    <div class="col-1">
+        <button type="button" id="filtre_culture" class="btn filtre culture" onclick="filtre_act('filtre_culture')">Culture</button>
+    </div>
+    <div class="col-1">
+        <button type="button" id="filtre_loisir" class="btn filtre loisir" onclick="filtre_act('filtre_loisir')">Loisir</button>
+    </div>
+    <div class="col-1">
+        <button type="button" id="filtre_musique" class="btn filtre musique" onclick="filtre_act('filtre_musique')">Musique</button>
+    </div>
+    <div class="col-1">
+        <button type="button" id="filtre_soiree" class="btn filtre soiree" onclick="filtre_act('filtre_soiree')">Soirée</button>
+    </div>
+    <div class="col-1">
+        <button type="button" id="filtre_autre" class="btn filtre autre" onclick="filtre_act('filtre_autre')">Autre</button>
+    </div>
+    <div class="col-1">
+        <button type="button" class="btn filtre" data-toggle="modal" data-target="#EVENT_Modal">Creer</button>
+    </div>
+    <div class="col-2"></div>
 </div>
 <div id="content" class="row">
     <div id="content_left" class="col-2">
@@ -23,9 +42,6 @@ if (!isset($_SESSION['mail']) && empty($_SESSION['mail'])) {
         <div class="row grey_back">c</div>
     </div>
     <div id="content_center" class="col-8">
-        <div class="row">
-            <button type="button" class="btn" data-toggle="modal" data-target="#EVENT_Modal">e</button>
-        </div>
         <div class="row">
             <section id="timeline">
             </section>
@@ -79,7 +95,7 @@ if (!isset($_SESSION['mail']) && empty($_SESSION['mail'])) {
                         <div class="input-group-prepend">
                             <span class="input-group-text">Description de l'évenement</span>
                         </div>
-                        <input id="NE_input_description" type="text" class="form-control">
+                        <textarea id="NE_input_description" class="form-control"></textarea>
                     </div>
                     <br>
                     <div class="input-group">

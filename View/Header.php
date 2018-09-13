@@ -4,7 +4,7 @@
 session_start();
 ?>
 <head>
-    <title>hello</title>
+    <title>WEE</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -30,15 +30,15 @@ session_start();
     </div>
     <div class="col-1"></div>
     <div id="login_logout" class="col-2">
-    <div class="dropdown" <?php if (!isset($_SESSION['mail'])) {echo 'style="display:none;"';}?>>
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Session
-        </button>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-            <h6 class="dropdown-header"><?=$_SESSION['mail'];?></h6>
-            <a class="dropdown-item" href="Controller\logout.php">Déconnexion</a>
+        <div class="dropdown" <?php if (!isset($_SESSION['mail'])) {echo 'style="display:none;"';}?>>
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Session
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                <h6 class="dropdown-header"><?=$_SESSION['mail'];?></h6>
+                <a class="dropdown-item" href="Controller\logout.php">Déconnexion</a>
+            </div>
         </div>
-    </div>
 
     </div>
     <div class="col-1"></div>

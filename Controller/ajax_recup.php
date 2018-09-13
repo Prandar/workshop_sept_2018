@@ -14,7 +14,7 @@ $bdd = new PDO('mysql:host=' . $host . ';dbname=' . $dbName . ';charset=utf8', $
 
 $events = array();
 
-$requete = 'SELECT * FROM event ORDER by date_debut ASC';
+$requete = 'SELECT * FROM event ORDER by date_debut DESC';
 
 $recup_events = $bdd->query( $requete );
 
@@ -23,16 +23,83 @@ while ($all = $recup_events->fetch()) {
 }
 
 foreach ($events as $event) {
+    switch ($event['id_cat']) {
+        case 2 :
+            $lacategorie =  'cinema';
+            break;
+        case 3 :
+            $lacategorie =  'sport';
+            break;
+        case 4 :
+            $lacategorie =  'culture';
+            break;
+        case 5 :
+            $lacategorie =  'loisir';
+            break;
+        case 6 :
+            $lacategorie =  'musique';
+            break;
+        case 7 :
+            $lacategorie =  'soiree';
+            break;
+        case 8 :
+            $lacategorie =  'autre';
+            break;
+    }
 
+    $date_deb = explode("-", $event['date_debut']);
+
+    switch ($date_deb[1]) {
+        case "01" :
+            $lemoidudeb =  'Jan';
+            break;
+        case "02" :
+            $lemoidudeb =  'Fév';
+            break;
+        case "03" :
+            $lemoidudeb =  'Mars';
+            break;
+        case "04" :
+            $lemoidudeb =  'Avri';
+            break;
+        case "05" :
+            $lemoidudeb =  'Mai';
+            break;
+        case "06" :
+            $lemoidudeb =  'Juin';
+            break;
+        case "07" :
+            $lemoidudeb =  'Juill';
+            break;
+        case "08" :
+            $lemoidudeb =  'Aout';
+            break;
+        case "09" :
+            $lemoidudeb =  'Sept';
+            break;
+        case "10" :
+            $lemoidudeb =  'Oct';
+            break;
+        case "11" :
+            $lemoidudeb =  'Nov';
+            break;
+        case "12" :
+            $lemoidudeb =  'Déc';
+            break;
+        default :
+            $lemoidudeb =  'Xxx';
+            break;
+
+    }
     ?>
-    <article id="carte_<?= $event['id_e'] ?>">
+    <article id="carte_<?= $event['id_e'] ?>" class="filtre_<?= $lacategorie ?>">
     <div id="carte_body_<?= $event['id_e'] ?>" class="inner">
-                <span class="date">
-                    <span class="day">11:00</span>
-                    <span class="month"><?= $event['date_debut'] ?></span>
-                    <span class="year">2018</span>
+                <span class="date <?= $lacategorie ?>">
+                    <span class="day"><?= $date_deb[2] ?></span>
+                    <span class="month"><?= $lemoidudeb ?></span>
+                    <span class="year"><?= $date_deb[0] ?></span>
                 </span>
-        <h2 class="<?= $event['id_cat'] ?>"><?= $event['titre'] ?></h2>
+        <h2 class="<?= $lacategorie ?>"><?= $event['titre'] ?></h2>
         <p id="p_<?= $event['id_e'] ?>'"><?= $event['description'] ?>
             <br>
             <button class="btn" data-toggle="modal" data-target="#comment_Modal"

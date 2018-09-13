@@ -1,29 +1,25 @@
 <?php
-    include_once ("../View/Header.php");
+    include_once("View/Header.php");
     if (isset($error) && $error == 1) {
 ?>
 <div class="alert alert-danger alert-dismissible" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-            aria-hidden="true">&times;</span></button>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
     L'identifiant ou le mot de passe est incorrect.
 </div>
 <?php
 }
 ?>
-<div class="container-fluid" id="logo_container">
-    <div class="row" id="colorlogo">
-        <div id="logo">
-            <img src="../Img/wee%20fond%20clair.png">
-        </div>
-    </div>
+<div class="container-fluid" id="logo_container" style="color: white;">
     <div class="row">
-        <h1> Rejoins la communauté !</h1>
+        <h1 style="color: white; background-color: rgba(0,0,0,0.3);"> Rejoins la communauté !</h1>
     </div>
-    <div class="row">
+    <div class="row" style="padding-bottom: 37vh">
         <div class="col-lg-3">
         </div>
         <div class="col-lg-6 form">
-            <form action="../Controller/login.php" method="POST">
+            <form action="Controller/login.php" method="POST">
                 <div class="form-group">
                     <label for="mail">Mail</label>
                     <input type="text" class="form-control" name="mail" placeholder="Entrez votre mail"/>

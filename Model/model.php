@@ -395,7 +395,7 @@ function VerifEvent()
             //commande
             echo $event['date_debut'];
         }
-    }catch (Exception $e) {
+    } catch (Exception $e) {
         //die('Erreur : ' . $e->getMessage());
         $result = 0;
     }

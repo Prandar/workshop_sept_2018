@@ -1,4 +1,6 @@
 function draw_card(_id, _categorie, _heure, _jour, _mois, _annee, _titre, _content) {
+    var categorie = convertion_categorie(_categorie);
+    console.log(categorie);
     carte_event = '<article id="carte_' +_id +'">\
                         <div id="carte_body_' +_id +'" class="inner">\
                             <span class="date">\
@@ -6,7 +8,7 @@ function draw_card(_id, _categorie, _heure, _jour, _mois, _annee, _titre, _conte
                                 <span class="month">' +_jour +' ' +_mois +'</span>\
                                 <span class="year">' +_annee +'</span>\
                             </span>\
-                            <h2 class="' +_categorie +'">' +_titre +'</h2>\
+                            <h2 class="' +categorie +'">' +_titre +'</h2>\
                             <p id="p_' +_id +'">' +_content  +'\
                             <br><button class="btn" data-toggle="modal" data-target="#comment_Modal" onclick="comment(' +_id +')"><i class="fas fa-comments"></i></button>\
                             <button class="btn" onclick="suppr_event()"><i class="fas fa-trash"></i></button>\
@@ -87,6 +89,51 @@ function convertdateformat(_date_euro) {
     _date_euro = _date_euro.split('-');
     var _date_us = _date_euro.reverse().join('-');
     return _date_us;
+}
+
+function convertion_categorie(_id_cat) {
+    switch (_id_cat) {
+        case 2 :
+            return 'cinema';
+            break;
+        case 3 :
+            return 'sport';
+            break;
+        case 4 :
+            return 'culture';
+            break;
+        case 5 :
+            return 'loisir';
+            break;
+        case 6 :
+            return 'musique';
+            break;
+        case 7 :
+            return 'soiree';
+            break;
+        case 8 :
+            return 'autre';
+            break;
+    }
+}
+
+function filtre_act(_filtre_click) {
+    liste_filtre_act.push(_filtre_click);
+    if (liste_filtre_act.length >= 7) {
+        liste_filtre_act=[];
+    } else {
+        $(".filtre_cinema").hide();
+        $(".filtre_sport").hide();
+        $(".filtre_culture").hide();
+        $(".filtre_loisir").hide();
+        $(".filtre_musique").hide();
+        $(".filtre_soiree").hide();
+        $(".filtre_autre").hide();
+        
+        $.each(liste_filtre_act,function (key,value) {
+            $("."+value);
+        });
+    }
 }
 
 

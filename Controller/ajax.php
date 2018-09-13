@@ -23,7 +23,7 @@ if (isset($_POST['titre']) && !empty($_POST['titre'])) {
     $date_deb =     htmlspecialchars($_POST['date_debut']);
     $date_fin =     htmlspecialchars($_POST['date_fin']);
     $lieu =         htmlspecialchars($_POST['lieu']);
-    $id_compte =    $_SESSION['id_co'];
+    $id_compte =    htmlspecialchars($_SESSION['id_co']);
     $id_categorie = htmlspecialchars($_POST['id_categorie']);
 
     $request = "INSERT INTO event(titre, description, date_debut, date_fin, lieu, id_co, id_cat) VALUES( '$titre','$description' ,'$date_deb' ,'$date_deb' ,'$lieu' , '$id_compte' ,'$id_categorie')";
