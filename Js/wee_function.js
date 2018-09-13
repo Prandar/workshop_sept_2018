@@ -9,7 +9,8 @@ function draw_card(_id, _categorie, _heure, _jour, _mois, _annee, _titre, _conte
                             <h2 class="' +_categorie +'">' +_titre +'</h2>\
                             <p id="p_' +_id +'">' +_content  +'\
                             <br><button class="btn" data-toggle="modal" data-target="#comment_Modal" onclick="comment(' +_id +')"><i class="fas fa-comments"></i></button>\
-                            <button class="btn" onclick="suppr_event()"><i class="fas fa-trash"></i></button></p>\
+                            <button class="btn" onclick="suppr_event()"><i class="fas fa-trash"></i></button>\
+                            <button class="btn" onclick="suppr_event()"><i class="fas fa-plus-circle"></i></button></p>\
                         </div>\
                     </article>';
     $("#timeline").append(carte_event);

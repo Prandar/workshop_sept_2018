@@ -1,9 +1,9 @@
 <?php
 include 'view\header.php';
 
-/*if (!isset($_SESSION['mail'])) {
+if (!isset($_SESSION['mail'])) {
     header('Location: view/login.php');
-}*/
+}
 ?>
 <div id="sub_bar" class="row">
     <button type="button" class="btn filtre" onclick="test('cinema')">Cinéma</button>
@@ -23,6 +23,9 @@ include 'view\header.php';
     </div>
     <div id="content_center" class="col-8">
         <div class="row">
+            <button type="button" class="btn" data-toggle="modal" data-target="#EVENT_Modal">e</button>
+        </div>
+        <div class="row">
             <section id="timeline">
             </section>
         </div>
@@ -37,6 +40,69 @@ include 'view\header.php';
 
     </div>
 </div>
+<!-- DEB Modal_event -->
+<div class="modal fade" id="EVENT_Modal" tabindex="-1" role="dialog" aria-labelledby="EVENT_ModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="EVENT_ModalLabel">Creer event</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Titre de l'évenement</span>
+                    </div>
+                    <input type="text" class="form-control">
+                </div>
+                <br>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Date du début de l'évenement</span>
+                    </div>
+                    <input type="text" class="form-control">
+                </div>
+                <br>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Date de fin de l'évenement</span>
+                    </div>
+                    <input type="text" class="form-control">
+                </div>
+                <br>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Description de l'évenement</span>
+                    </div>
+                    <input type="text" class="form-control">
+                </div>
+                <br>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Lieu de l'évenement</span>
+                    </div>
+                    <input type="text" class="form-control">
+                </div>
+                <br>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Catégorie de l'évenement</span>
+                    </div>
+                    <select class="form-control">
+                        <?php ?>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--FIN Modal_event-->
 <!--DEB modal comment-->
 <div class="modal fade" id="comment_Modal" tabindex="-1" role="dialog" aria-labelledby="comment_ModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

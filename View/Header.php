@@ -22,15 +22,23 @@ session_start();
     </div>
     <div class="col-1"></div>
     <div id="login_logout" class="col-2">
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown button
-            </button>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                <h6 class="dropdown-header"><?=$_SESSION['mail'];?></h6>
-                <a class="dropdown-item" href="logout.php">Déconnexion</a>
-            </div>
+
+    <script type="text/javascript">
+    $(function(){
+        var maVariableDeSession = '<?php echo $_SESSION['mail']; ?>';
+    });
+    </script>
+
+    <div class="dropdown" style="display: none">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Session
+        </button>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+            <h6 class="dropdown-header"><?=$_SESSION['mail'];?></h6>
+            <a class="dropdown-item" href="Controller\logout.php">Déconnexion</a>
         </div>
+    </div>
+
     </div>
     <div class="col-1"></div>
 
