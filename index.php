@@ -51,49 +51,53 @@ if (!isset($_SESSION['mail'])) {
                 </button>
             </div>
             <div class="modal-body">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Titre de l'évenement</span>
+                <form action="index.php" method="post" id="New_event">
+
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Titre de l'évenement</span>
+                        </div>
+                        <input id="NE_input_titre" type="text" class="form-control">
                     </div>
-                    <input type="text" class="form-control">
-                </div>
-                <br>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Date du début de l'évenement</span>
+                    <br>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Date du début de l'évenement</span>
+                        </div>
+                        <input id="NE_input_date_deb" type="text" class="form-control">
                     </div>
-                    <input type="text" class="form-control">
-                </div>
-                <br>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Date de fin de l'évenement</span>
+                    <br>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Date de fin de l'évenement</span>
+                        </div>
+                        <input id="NE_input_date_fin" type="text" class="form-control">
                     </div>
-                    <input type="text" class="form-control">
-                </div>
-                <br>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Description de l'évenement</span>
+                    <br>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Description de l'évenement</span>
+                        </div>
+                        <input id="NE_input_description" type="text" class="form-control">
                     </div>
-                    <input type="text" class="form-control">
-                </div>
-                <br>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Lieu de l'évenement</span>
+                    <br>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Lieu de l'évenement</span>
+                        </div>
+                        <input id="NE_input_lieu" type="text" class="form-control">
                     </div>
-                    <input type="text" class="form-control">
-                </div>
-                <br>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Catégorie de l'évenement</span>
+                    <br>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span id="NE_input_categorie" class="input-group-text">Catégorie de l'évenement</span>
+                        </div>
+                        <select class="form-control">
+                            <?php ?>
+                        </select>
+                        <input type="submit" value="Submit" class="btn">
                     </div>
-                    <select class="form-control">
-                        <?php ?>
-                    </select>
-                </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -125,12 +129,5 @@ if (!isset($_SESSION['mail'])) {
     </div>
 </div>
 <!--FIN modal comment-->
-<script>
-    $( document ).ready(function() {
-        $('#comment_Modal').on('show.bs.modal', function (e) {
-            comment_ModalLabel_SET_info();
-        })
-    });
-</script>
 </body>
 </html>
